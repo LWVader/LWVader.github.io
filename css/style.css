@@ -7,10 +7,6 @@ body {
     background-color: #d1def1;
     text-decoration-color: aqua;
     }
-a {
-    color: #007bff;
-    text-decoration: none;
-}
 
 .main {
     display: flex;
@@ -26,19 +22,26 @@ a {
 } 
 
 .header {
-    background: #0d1117;             
+    background: #0d1117;
+    background-image: url("https://i.postimg.cc/5tmy1TjX/profile-header.jpg");         
     border: 2px solid #080cf3;       
     border-radius: 6px;
-    padding: 20px 40px;
+    padding: 15px 40px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.541);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.541);   
+    display: flex;
+    flex-direction: row;            
+    justify-content: space-between; 
+    align-items: center;            
 }
 
-.header h1 {
+.header h1 {              
+    align-items: center;
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: 3.5rem;
     font-weight: 900;
     text-transform: uppercase;
+    text-align: left;
     letter-spacing: 3px;
     margin: 0;
     color: #0f172a;    
@@ -47,6 +50,46 @@ a {
         0 0 4px rgba(0, 212, 255, 0.6),
         0 0 12px rgba(0, 212, 255, 0.3);
 }
+.header2{
+   border: 2px solid #080cf3;       
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.541);   
+    display: flex;
+    flex-direction: row;            
+    justify-content: space-between; 
+    background: #0d1117;   
+    align-items: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 3px;
+    margin: 0;
+    color: #0f172a;    
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.541);   
+    text-shadow: 
+        0 0 7px rgb(225, 0, 255),
+        0 0 12px rgba(0, 255, 200, 0.438);
+    background-image: url("https://i.postimg.cc/c4C7rMNp/projects-header3.jpg");
+    background-size: cover;       /* Fits the entire image inside without cropping */
+    background-repeat: no-repeat;   /* Prevents the image from tiling */
+    background-position: center;     /* Centers the main artwork (laptop & brain) */
+     }
+
+.header3 {
+    background: #0d1117;        
+    border: 2px solid #080cf3;       
+    border-radius: 6px;
+    padding: 15px 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.541);
+    display: flex;
+    align-items: center;  
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.08);   
+    text-shadow: 
+        0 0 5px rgba(0, 213, 255, 0.726),
+        0 0 12px rgba(0, 213, 255, 0.685);
+}
+
 
 .contact {
     display: flex;
@@ -81,6 +124,39 @@ a.contact-item:hover {
     box-shadow: 0 0 12px rgba(255, 136, 0, 0.35);
     text-decoration: none;      
 }
+.profile-image {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+
+}
+/* 1. Parent grid layout container */
+.bio-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px; /* Left Image | Text | Right Image */
+  gap: 2rem;
+  align-items: stretch;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+/* 2. Shared image styling for left/right images */
+.img1, .img2 {
+  width: 120%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+/* 3. Cleaned-up body (removed conflicting display flex on top-level) */
+body {
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #d1def1;
+}
+
+
 
 .section {
     margin: 20px 0;
@@ -89,6 +165,7 @@ a.contact-item:hover {
 
 .section h2 {
     text-align: center;
+    font-size: 2.5rem; 
     filter: drop-shadow(2px 2px 2px rgba(214, 6, 233, 0.979));
     margin: 5px 0;
     background: linear-gradient(360deg,rgba(235, 216, 12, 1) 0%, rgba(91, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
@@ -180,4 +257,22 @@ blockquote {
     border-top: 1px solid #ddd;
     padding-top: 1rem;
     margin-top: 2rem;
+}
+/* Mobile responsiveness: stack vertically on small screens */
+@media (max-width: 900px) {
+  .bio-layout {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  .left-img {
+    order: 1; /* Left image above text on mobile */
+  }
+
+  .portfolio-bio {
+    order: 2;
+  }
+
+  .right-img {
+    order: 3; /* Right image below text on mobile */
+  }
 }

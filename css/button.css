@@ -1,25 +1,49 @@
-.button {
+/* Base Button Styling (Shared across all buttons) */
+.button, 
+.Pbutton, 
+.Ibutton, 
+.Rbutton, 
+.Fbutton {
     display: inline-block;
     text-decoration: underline;
     color: #04040c;
     border: none;
-    font-weight: bold;
     padding: 5px 10px;
-    margin: 10px 5px;
     border-radius: 4px;
     background: linear-gradient(360deg, rgba(235, 216, 12, 1) 0%, rgb(193, 97, 228) 35%, rgba(0, 212, 255, 1) 100%);
+    cursor: pointer;
 }
+
+/* Big Action Button */
 #load-projects-btn {
-    display: block;              
+    display: inline-block;             
     text-decoration: underline;
     color: #04040c;
     border: none;       
     padding: 15px 30px;          
     font-size: 1.25rem;          
     font-weight: bold;           
-    margin: 30px auto;              
+    margin: 30px 5px;              
     border-radius: 8px;         
-    cursor: pointer;             
-    
+    cursor: pointer;            
     background: linear-gradient(360deg, rgba(235, 216, 12, 1) 0%, rgb(193, 97, 228) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+/* Stacks the buttons vertically on the right side */
+.header-buttons {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center; /* Vertically centers the stack */
+    align-items: center;     /* Horizontally centers buttons relative to each other */
+    gap: 16px;               
+}
+
+/* Reset margin on header buttons so the gap handles spacing */
+.header-buttons .button,
+.header-buttons .Fbutton,
+.header-buttons .Pbutton,
+.header-buttons .Rbutton,
+.header-buttons .Ibutton {
+    margin: 0;
 }
