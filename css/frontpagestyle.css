@@ -1,0 +1,376 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #040907;
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Scene Container */
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background Image Layer */
+.forest-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: url("../images/magical-forest.png") center center / cover no-repeat;
+}
+
+/* Central Tree Asset */
+.magical-tree {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 0;
+  height: 75vh;
+  width: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+}
+
+/* Floating Sparkles */
+.sparkle {
+  position: absolute;
+  z-index: 3;
+  color: #ffe99e;
+  font-size: clamp(14px, 1.5vw, 22px);
+  pointer-events: none;
+  text-shadow: 0 0 10px #ffe28a;
+  animation: floatSparkle 2.5s infinite alternate ease-in-out;
+}
+
+.sparkle.one   { top: 20%; left: 28%; animation-delay: 0s; }
+.sparkle.two   { top: 25%; right: 26%; animation-delay: 0.6s; }
+.sparkle.three { bottom: 35%; left: 22%; animation-delay: 1.2s; }
+.sparkle.four  { bottom: 32%; right: 24%; animation-delay: 1.8s; }
+
+@keyframes floatSparkle {
+  0%   { opacity: 0.2; transform: translateY(0) scale(0.8); }
+  100% { opacity: 1;   transform: translateY(-10px) scale(1.2); }
+}
+
+/* Navigation Overlay Container */
+.nav-container {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Scaled Mushroom Buttons */
+.nav-button {
+  pointer-events: auto;
+  position: absolute;
+  bottom: 8%; /* Anchored to bottom of screen */
+  width: clamp(95px, 8vw, 120px);
+  height: clamp(80px, 6.8vw, 100px);
+  padding-top: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 22px;
+
+  text-decoration: none;
+  border: 2px solid #f4c07b;
+  border-radius: 75% 75% 45% 45% / 65% 65% 35% 35%;
+  box-shadow: 0 6px 0 #3d1b15, 0 0 18px rgba(232, 184, 95, 0.4);
+
+  /* Drop In Animation */
+  animation: dropMushroom 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+.button-text {
+  color: #ffffff;
+  font: bold clamp(11px, 0.9vw, 14px) 'Georgia', serif;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes dropMushroom {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(-12deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(12px) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Mushroom Stems */
+.nav-button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 28%;
+  bottom: -24px;
+  width: 44%;
+  height: 32px;
+
+  background: linear-gradient(90deg, #d8a468, #ffe5ab 45%, #b87543);
+  border: 2px solid #733c20;
+  border-top: 0;
+  border-radius: 6px 6px 22px 22px;
+  box-shadow: 0 3px 0 #2b120d;
+}
+
+/* Hover Lift & Glow */
+.nav-button:hover {
+  transform: scale(1.12) translateY(-6px) !important;
+  box-shadow: 0 10px 0 #3d1b15, 0 0 28px #ffe28a;
+}
+.nav-button:hover .button-text {
+  color: #fff9d4;
+}
+
+/* Mushroom Cap Color Variants & Bottom Screen Placements */
+.Ibutton {
+  left: 10%;
+  animation-delay: 0.1s;
+  background:
+    radial-gradient(circle at 25% 25%, #ffcf91 0 5px, transparent 6px),
+    radial-gradient(circle at 75% 25%, #ffe2a8 0 4px, transparent 5px),
+    radial-gradient(circle at 45% 45%, #ffcf91 0 5px, transparent 6px),
+    radial-gradient(circle at 80% 50%, #ffe2a8 0 4px, transparent 5px),
+    radial-gradient(circle at 50% 10%, #e87955, #872428 75%);
+}
+
+.Pbutton {
+  left: auto; 
+  right: 12%;
+  transform: translateX(-50%);
+  animation-delay: 0.3s;
+  background:
+    radial-gradient(circle at 25% 25%, #fff3a4 0 5px, transparent 6px),
+    radial-gradient(circle at 75% 25%, #fff7c9 0 4px, transparent 5px),
+    radial-gradient(circle at 45% 45%, #fff3a4 0 5px, transparent 6px),
+    radial-gradient(circle at 80% 50%, #fff7c9 0 4px, transparent 5px),
+    radial-gradient(circle at 50% 10%, #dcae45, #6e3d1c 75%);
+}
+
+.Rbutton {
+ left: 28%;
+  right: auto;
+  animation-delay: 0.5s;
+  background:
+    radial-gradient(circle at 25% 25%, #bde6ff 0 5px, transparent 6px),
+    radial-gradient(circle at 75% 25%, #d9f4ff 0 4px, transparent 5px),
+    radial-gradient(circle at 45% 45%, #bde6ff 0 5px, transparent 6px),
+    radial-gradient(circle at 80% 50%, #d9f4ff 0 4px, transparent 5px),
+    radial-gradient(circle at 50% 10%, #5c83d6, #27337d 75%);
+}
+
+/* ==========================================
+   Full-Screen Glowing Pollen Particles
+   ========================================== */
+
+.pollen-container {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pollen {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7c2 0%, #ffd000 60%, rgba(255, 174, 0, 0) 100%);
+  box-shadow: 0 0 10px #ffe575, 0 0 20px #ffc400, 0 0 30px #ffa600;
+  opacity: 0;
+  animation: floatUp 9s infinite ease-in-out, pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(105vh) translateX(0) scale(0.5);
+  }
+  20% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(50vh) translateX(35px) scale(1.1);
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) translateX(-25px) scale(0.5);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 4px #fff380);
+  }
+  50% {
+    filter: brightness(1.7) drop-shadow(0 0 12px #ffc400);
+  }
+}
+
+/* Particles Spanning Full Viewport Width (10% to 90%) */
+.pollen.p1  { left: 10%; width: 8px;  height: 8px;  animation-duration: 9s, 3.5s;  animation-delay: 0s, 0s; }
+.pollen.p2  { left: 18%; width: 5px;  height: 5px;  animation-duration: 7s, 4s;    animation-delay: 1.5s, 0.5s; }
+.pollen.p3  { left: 26%; width: 10px; height: 10px; animation-duration: 11s, 5s;   animation-delay: 3s, 1s; }
+.pollen.p4  { left: 34%; width: 6px;  height: 6px;  animation-duration: 8.5s, 3s;  animation-delay: 4.5s, 1.5s; }
+.pollen.p5  { left: 42%; width: 7px;  height: 7px;  animation-duration: 10s, 4.5s; animation-delay: 2s, 0.8s; }
+.pollen.p6  { left: 50%; width: 12px; height: 12px; animation-duration: 12s, 6s;   animation-delay: 5.5s, 2s; }
+.pollen.p7  { left: 58%; width: 5px;  height: 5px;  animation-duration: 7.5s, 3.8s; animation-delay: 6s, 1.2s; }
+.pollen.p8  { left: 66%; width: 9px;  height: 9px;  animation-duration: 9.5s, 4.2s; animation-delay: 0.8s, 0.3s; }
+.pollen.p9  { left: 74%; width: 7px;  height: 7px;  animation-duration: 10.5s, 4s;  animation-delay: 2.5s, 0.6s; }
+.pollen.p10 { left: 82%; width: 11px; height: 11px; animation-duration: 8s, 3.2s;   animation-delay: 1.2s, 1.8s; }
+.pollen.p11 { left: 90%; width: 6px;  height: 6px;  animation-duration: 9.2s, 4.8s; animation-delay: 3.8s, 0.9s; }
+.pollen.p12 { left: 46%; width: 8px;  height: 8px;  animation-duration: 11.5s, 5.2s;animation-delay: 4.2s, 1.4s; }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nav-button {
+    bottom: 6%;
+    width: 90px;
+    height: 75px;
+  }
+  .Ibutton { left: 6%; }
+  .Pbutton { left: 50%; }
+  .Rbutton { right: 6%; }
+}
+/* ==========================================
+   Site Header & Letter-Drop Animation
+   ========================================== */
+
+.site-header {
+  position: absolute;
+  top: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.header-title {
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-style: italic;
+  margin-top: 4px;
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Individual Letter Styles */
+.site-header .letter {
+  display: inline-block;
+  color: #fff4c4;
+  text-shadow:
+    0 0 10px rgba(255, 233, 158, 0.8),
+    0 0 20px rgba(255, 184, 95, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  transform: translateY(-150px) rotate(-15deg);
+  animation: dropLetter 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+}
+
+.header-subtitle .letter {
+  color: #ffffff; /* Brightened core text color to make the glow pop */
+  -webkit-text-stroke: 1.5px rgb(7, 84, 126);
+  text-shadow:
+    /* High-intensity inner core glow */
+    0 0 5px #ffffff,
+    0 0 10px #70d6ff,
+    /* Mid-range vivid cyan/blue aura */
+    0 0 20px #00b4d8,
+    0 0 35px #0077b6,
+    /* Wide outer ambient haze */
+    0 0 50px rgba(0, 180, 216, 0.9),
+    0 0 75px rgba(0, 119, 182, 0.7),
+    /* Deep drop shadow behind the glow for maximum contrast */
+    0 4px 8px rgba(0, 0, 0, 0.95);
+}
+
+
+.site-header .letter.space {
+  width: 0.35em;
+}
+
+/* Drop Animation Keyframes */
+@keyframes dropLetter {
+  0% {
+    opacity: 0;
+    transform: translateY(-150px) rotate(-15deg);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(8px) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Staggered Delay for Title Letters */
+.header-title .letter:nth-child(1)  { animation-delay: 0.05s; }
+.header-title .letter:nth-child(2)  { animation-delay: 0.10s; }
+.header-title .letter:nth-child(3)  { animation-delay: 0.15s; }
+.header-title .letter:nth-child(4)  { animation-delay: 0.20s; }
+.header-title .letter:nth-child(5)  { animation-delay: 0.25s; }
+.header-title .letter:nth-child(6)  { animation-delay: 0.30s; }
+.header-title .letter:nth-child(7)  { animation-delay: 0.35s; }
+.header-title .letter:nth-child(8)  { animation-delay: 0.40s; }
+.header-title .letter:nth-child(9)  { animation-delay: 0.45s; }
+.header-title .letter:nth-child(10) { animation-delay: 0.50s; }
+.header-title .letter:nth-child(11) { animation-delay: 0.55s; }
+.header-title .letter:nth-child(12) { animation-delay: 0.60s; }
+.header-title .letter:nth-child(13) { animation-delay: 0.65s; }
+
+/* Staggered Delay for Subtitle Letters */
+.header-subtitle .letter:nth-child(1)  { animation-delay: 0.50s; }
+.header-subtitle .letter:nth-child(2)  { animation-delay: 0.54s; }
+.header-subtitle .letter:nth-child(3)  { animation-delay: 0.58s; }
+.header-subtitle .letter:nth-child(4)  { animation-delay: 0.62s; }
+.header-subtitle .letter:nth-child(5)  { animation-delay: 0.66s; }
+.header-subtitle .letter:nth-child(6)  { animation-delay: 0.70s; }
+.header-subtitle .letter:nth-child(7)  { animation-delay: 0.74s; }
+.header-subtitle .letter:nth-child(8)  { animation-delay: 0.78s; }
+.header-subtitle .letter:nth-child(9)  { animation-delay: 0.82s; }
+.header-subtitle .letter:nth-child(10) { animation-delay: 0.86s; }
+.header-subtitle .letter:nth-child(11) { animation-delay: 0.90s; }
+.header-subtitle .letter:nth-child(12) { animation-delay: 0.94s; }
+.header-subtitle .letter:nth-child(13) { animation-delay: 0.98s; }
+.header-subtitle .letter:nth-child(14) { animation-delay: 1.02s; }
+.header-subtitle .letter:nth-child(15) { animation-delay: 1.06s; }
+.header-subtitle .letter:nth-child(16) { animation-delay: 1.10s; }
+.header-subtitle .letter:nth-child(17) { animation-delay: 1.14s; }
+.header-subtitle .letter:nth-child(18) { animation-delay: 1.18s; }
