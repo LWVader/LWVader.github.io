@@ -1,49 +1,71 @@
-/* Base Button Styling (Shared across all buttons) */
+/* Base Button Styling */
 .button, 
 .Pbutton, 
 .Ibutton, 
 .Rbutton, 
 .Fbutton {
-    display: inline-block;
-    text-decoration: underline;
-    color: #04040c;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background: linear-gradient(360deg, rgba(235, 216, 12, 1) 0%, rgb(193, 97, 228) 35%, rgba(0, 212, 255, 1) 100%);
-    cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  border: 1px solid #f4c07b;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #d8a468 0%, #733c20 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover, 
+.Pbutton:hover, 
+.Ibutton:hover, 
+.Rbutton:hover, 
+.Fbutton:hover {
+  background: linear-gradient(180deg, #ffe28a 0%, #b87543 100%);
+  box-shadow: 0 0 12px rgba(255, 226, 138, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Big Action Button */
 #load-projects-btn {
-    display: inline-block;             
-    text-decoration: underline;
-    color: #04040c;
-    border: none;       
-    padding: 15px 30px;          
-    font-size: 1.25rem;          
-    font-weight: bold;           
-    margin: 30px 5px;              
-    border-radius: 8px;         
-    cursor: pointer;            
-    background: linear-gradient(360deg, rgba(235, 216, 12, 1) 0%, rgb(193, 97, 228) 35%, rgba(0, 212, 255, 1) 100%);
+  display: inline-block;              
+  text-decoration: none;
+  color: #040907;
+  font-family: 'Georgia', serif;
+  border: 1px solid #ffe28a;        
+  padding: 14px 28px;           
+  font-size: 1.2rem;           
+  font-weight: bold;            
+  margin: 25px auto;              
+  border-radius: 8px;          
+  cursor: pointer;             
+  background: linear-gradient(180deg, #ffe99e 0%, #d8a468 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 233, 158, 0.3);
+  transition: all 0.25s ease;
 }
 
-/* Stacks the buttons vertically on the right side */
+#load-projects-btn:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #ffe28a 100%);
+  box-shadow: 0 6px 20px rgba(255, 226, 138, 0.6);
+  transform: scale(1.03);
+}
+
+/* Header Buttons Stack Layout */
 .header-buttons {
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center; /* Vertically centers the stack */
-    align-items: center;     /* Horizontally centers buttons relative to each other */
-    gap: 16px;               
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center; 
+  align-items: center;    
+  gap: 12px;               
 }
 
-/* Reset margin on header buttons so the gap handles spacing */
 .header-buttons .button,
 .header-buttons .Fbutton,
 .header-buttons .Pbutton,
 .header-buttons .Rbutton,
 .header-buttons .Ibutton {
-    margin: 0;
+  margin: 0;
 }

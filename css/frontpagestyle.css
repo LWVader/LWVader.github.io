@@ -5,9 +5,9 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   background: #040907;
   font-family: 'Georgia', serif;
   display: flex;
@@ -18,7 +18,7 @@ body {
 /* Scene Container */
 .scene {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 }
@@ -77,7 +77,7 @@ body {
 .nav-button {
   pointer-events: auto;
   position: absolute;
-  bottom: 8%; /* Anchored to bottom of screen */
+  bottom: 8%;
   width: clamp(95px, 8vw, 120px);
   height: clamp(80px, 6.8vw, 100px);
   padding-top: 14px;
@@ -85,13 +85,10 @@ body {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 22px;
-
   text-decoration: none;
   border: 2px solid #f4c07b;
   border-radius: 75% 75% 45% 45% / 65% 65% 35% 35%;
   box-shadow: 0 6px 0 #3d1b15, 0 0 18px rgba(232, 184, 95, 0.4);
-
-  /* Drop In Animation */
   animation: dropMushroom 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
@@ -128,7 +125,6 @@ body {
   bottom: -24px;
   width: 44%;
   height: 32px;
-
   background: linear-gradient(90deg, #d8a468, #ffe5ab 45%, #b87543);
   border: 2px solid #733c20;
   border-top: 0;
@@ -158,8 +154,7 @@ body {
 }
 
 .Pbutton {
-  left: auto; 
-  right: 12%;
+  left: 50%;
   transform: translateX(-50%);
   animation-delay: 0.3s;
   background:
@@ -171,8 +166,8 @@ body {
 }
 
 .Rbutton {
- left: 28%;
-  right: auto;
+  right: 10%;
+  left: auto;
   animation-delay: 0.5s;
   background:
     radial-gradient(circle at 25% 25%, #bde6ff 0 5px, transparent 6px),
@@ -182,10 +177,7 @@ body {
     radial-gradient(circle at 50% 10%, #5c83d6, #27337d 75%);
 }
 
-/* ==========================================
-   Full-Screen Glowing Pollen Particles
-   ========================================== */
-
+/* Glowing Pollen Particles */
 .pollen-container {
   position: absolute;
   inset: 0;
@@ -232,7 +224,6 @@ body {
   }
 }
 
-/* Particles Spanning Full Viewport Width (10% to 90%) */
 .pollen.p1  { left: 10%; width: 8px;  height: 8px;  animation-duration: 9s, 3.5s;  animation-delay: 0s, 0s; }
 .pollen.p2  { left: 18%; width: 5px;  height: 5px;  animation-duration: 7s, 4s;    animation-delay: 1.5s, 0.5s; }
 .pollen.p3  { left: 26%; width: 10px; height: 10px; animation-duration: 11s, 5s;   animation-delay: 3s, 1s; }
@@ -246,21 +237,7 @@ body {
 .pollen.p11 { left: 90%; width: 6px;  height: 6px;  animation-duration: 9.2s, 4.8s; animation-delay: 3.8s, 0.9s; }
 .pollen.p12 { left: 46%; width: 8px;  height: 8px;  animation-duration: 11.5s, 5.2s;animation-delay: 4.2s, 1.4s; }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .nav-button {
-    bottom: 6%;
-    width: 90px;
-    height: 75px;
-  }
-  .Ibutton { left: 6%; }
-  .Pbutton { left: 50%; }
-  .Rbutton { right: 6%; }
-}
-/* ==========================================
-   Site Header & Letter-Drop Animation
-   ========================================== */
-
+/* Header & Letter-Drop Animation */
 .site-header {
   position: absolute;
   top: 4vh;
@@ -273,7 +250,7 @@ body {
 }
 
 .header-title {
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
   font-weight: bold;
   letter-spacing: 2px;
   display: flex;
@@ -281,7 +258,7 @@ body {
 }
 
 .header-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-size: clamp(1rem, 2vw, 1.8rem);
   font-style: italic;
   margin-top: 4px;
   letter-spacing: 3px;
@@ -289,7 +266,6 @@ body {
   justify-content: center;
 }
 
-/* Individual Letter Styles */
 .site-header .letter {
   display: inline-block;
   color: #fff4c4;
@@ -303,28 +279,22 @@ body {
 }
 
 .header-subtitle .letter {
-  color: #ffffff; /* Brightened core text color to make the glow pop */
+  color: #ffffff;
   -webkit-text-stroke: 1.5px rgb(7, 84, 126);
   text-shadow:
-    /* High-intensity inner core glow */
     0 0 5px #ffffff,
     0 0 10px #70d6ff,
-    /* Mid-range vivid cyan/blue aura */
     0 0 20px #00b4d8,
     0 0 35px #0077b6,
-    /* Wide outer ambient haze */
     0 0 50px rgba(0, 180, 216, 0.9),
     0 0 75px rgba(0, 119, 182, 0.7),
-    /* Deep drop shadow behind the glow for maximum contrast */
     0 4px 8px rgba(0, 0, 0, 0.95);
 }
-
 
 .site-header .letter.space {
   width: 0.35em;
 }
 
-/* Drop Animation Keyframes */
 @keyframes dropLetter {
   0% {
     opacity: 0;
@@ -340,7 +310,6 @@ body {
   }
 }
 
-/* Staggered Delay for Title Letters */
 .header-title .letter:nth-child(1)  { animation-delay: 0.05s; }
 .header-title .letter:nth-child(2)  { animation-delay: 0.10s; }
 .header-title .letter:nth-child(3)  { animation-delay: 0.15s; }
@@ -355,7 +324,6 @@ body {
 .header-title .letter:nth-child(12) { animation-delay: 0.60s; }
 .header-title .letter:nth-child(13) { animation-delay: 0.65s; }
 
-/* Staggered Delay for Subtitle Letters */
 .header-subtitle .letter:nth-child(1)  { animation-delay: 0.50s; }
 .header-subtitle .letter:nth-child(2)  { animation-delay: 0.54s; }
 .header-subtitle .letter:nth-child(3)  { animation-delay: 0.58s; }
@@ -374,3 +342,15 @@ body {
 .header-subtitle .letter:nth-child(16) { animation-delay: 1.10s; }
 .header-subtitle .letter:nth-child(17) { animation-delay: 1.14s; }
 .header-subtitle .letter:nth-child(18) { animation-delay: 1.18s; }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nav-button {
+    bottom: 5%;
+    width: 85px;
+    height: 70px;
+  }
+  .Ibutton { left: 4%; }
+  .Pbutton { left: 50%; }
+  .Rbutton { right: 4%; }
+}

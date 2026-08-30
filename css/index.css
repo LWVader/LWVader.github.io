@@ -1,38 +1,48 @@
+/* Responsive Overrides & Media Queries */
+
 @media (max-width: 1200px) {     
-    .container {
-        padding: 10px;
-    }
-    
-    .header h1 {
-        font-size: 24px;
-    }
-    
-    .contact {
-        font-size: 12px;
-    }
-    
-    .section h2 {
-        font-size: 20px;
-    }
-    
-    .item1, .item2 {
-        font-size: 16px;
-    }
+  .main, .container {
+    padding: 20px 15px;
+  }
+  
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .contact-item {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .item1, .item2 {
+    font-size: 15px;
+  }
 }
+
 @media (max-width: 480px) {
-    .header h1 {
-        font-size: 20px;
-    }
-    
-    .contact {
-        font-size: 10px;
-    }
-    
-    .section h2 {
-        font-size: 18px;
-    }
-    
-    .item1, .item2 {
-        font-size: 14px;
-    }   
-}   
+  .header h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+  
+  .contact {
+    gap: 8px;
+  }
+
+  .contact-item {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  
+  .section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .item1, .item2 {
+    font-size: 13px;
+  }   
+}

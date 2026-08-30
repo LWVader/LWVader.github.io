@@ -1,12 +1,16 @@
 const GITHUB_USERNAME = 'LWVader';
-const featuredProjects = ['Resume', 'Ecommerce-Website-build', 'About-Me-HTML'];
+const featuredProjects = [
+  'Ecommerce-Website-build',
+  'Bottt-Party',
+  'Hotel-Site',
+  'Fun-Page'
+];
 
 async function fetchGitHubProjects() {
     const container = document.getElementById('projects-container');
     const button = document.getElementById('load-projects-btn');
     
-    
-    container.innerHTML = '<p>Loading projects...</p>';
+    container.innerHTML = '<p class="repo-desc">Loading projects...</p>';
     button.disabled = true; 
     button.innerText = 'Loading...';
     
@@ -22,31 +26,28 @@ async function fetchGitHubProjects() {
         
         container.innerHTML = '';
         
-        filteredRepos.forEach((repo, index) => {
+        filteredRepos.forEach((repo) => {
             const projectCard = document.createElement('div');
-            projectCard.className = `proj${index + 1}`; 
+            projectCard.className = 'project-card'; 
             
             projectCard.innerHTML = `
                 <h3>${repo.name}</h3>
-                <a href="${repo.html_url}" target="_blank">GitHub Repository</a>
-                <p>${repo.description || 'No description provided.'}</p>
+                <a href="${repo.html_url}" target="_blank" class="repo-link">GitHub Repository</a>
+                <p class="repo-desc">${repo.description || 'No description provided.'}</p>
             `;
             
             container.appendChild(projectCard);
         });
 
-        
         button.style.display = 'none';
 
     } catch (error) {
         console.error('Error fetching projects:', error);
-        container.innerHTML = `<p>Failed to load projects. You can view them directly on <a href="https://github.com/LWVader" target="_blank">GitHub</a>.</p>`;
+        container.innerHTML = `<p class="repo-desc">Failed to load projects. You can view them directly on <a href="https://github.com/LWVader" target="_blank" class="repo-link">GitHub</a>.</p>`;
         
-       
         button.disabled = false;
         button.innerText = 'Retry Loading Projects';
     }
 }
-
 
 document.getElementById('load-projects-btn').addEventListener('click', fetchGitHubProjects);
